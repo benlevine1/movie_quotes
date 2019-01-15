@@ -32,8 +32,8 @@ class Nav extends Component{
     ],
     authLinks:[
       {
-        text: 'Secret Movie List',
-        to: '/secret-movie-list'
+        text: 'Private Movie List',
+        to: '/movie-list/private'
       },
       {
         text: 'Movie Quotes',
@@ -55,7 +55,7 @@ class Nav extends Component{
 
   renderLinks(){
     const { authLinks, commonLinks, noAuthLinks } = this.state;
-    const auth = true ;
+    const auth = true;
 
     let links = [...commonLinks];
 
@@ -63,8 +63,8 @@ class Nav extends Component{
       links = [...links, ...authLinks ].map(this.buildLink);
 
       links.push(
-        <li key="sign-out">
-          <button onClick = {this.handleSignOut} className="btn black">Sign Out</button>
+        <li className="sign-out" key="sign-out">
+          <button onClick = {this.handleSignOut} className="btn grey darken-2">Sign Out</button>
         </li>
       )
     } else {
