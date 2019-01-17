@@ -4,6 +4,6 @@ export default ({input, type = 'text', label, size = 's12', meta: {touched, erro
   <div className={`input-field col ${size}`}>
     <input {...input} type={type} id={input.name} autoComplete="off"/>
     <label htmlFor={input.name}>{label}</label>
-    <p className="blue-text text-darken-2">{touched && error}</p>
+    <p className="red-text text-darken-2">{touched && error}</p>
   </div>
 )

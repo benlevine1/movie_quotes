@@ -1,13 +1,33 @@
-import React from 'react'
-import SignInForm from './sign_in_form'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { signIn } from '../../actions'
+import SignInForm from './sign_in_form';
 
-export default props => {
-  return(
-    <div>
-      <h1 className="center">Sign In</h1>
-      <div className="center">
-        <SignInForm/>
+
+class SignIn extends Component{
+
+  handleSignIn = (values) => {
+    console.log("Sign-In Values", values)
+
+    this.props.signIn(values);
+  }
+  render(){
+    // console.log("Sign In Props", this.props);
+    return(
+      <div>
+        <h1 className="center">Sign In</h1>
+        <div className="center">
+          <SignInForm authError={this.props.error} onSubmit={this.handleSignIn}/>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
+
+function mapStateToProps(state){
+  return {
+    error: state.user.signInError
+  };
+}
+
+export default connect(mapStateToProps, {signIn})(SignIn);
